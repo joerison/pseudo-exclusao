@@ -3,6 +3,8 @@ package computador;
 import java.util.Date;
 import java.util.Random;
 
+import javax.swing.DefaultListModel;
+
 public class Computador {
 
 	private static DiscoRigido hd = new DiscoRigido();
@@ -35,40 +37,63 @@ public class Computador {
 		hd.salvarArquivo(arquivo);
 	}
 
-	public String mostrarConteudoDoDisco() {
-		StringBuilder arquivos = new StringBuilder();
+	public DefaultListModel<String> mostrarConteudoDoDisco() {
+		DefaultListModel<String> arquivosNoDisco = new DefaultListModel<String>();
+
 		int z = 0;
 		for (int i = 0; i < hd.getFat().size(); i++) {
 			for (int y = 0; y < hd.getCluster().size(); y++) {
-				if (hd.getFat().get(i).getLocalizacao().equals(hd.getCluster().get(y).getReferencia())) {
-					arquivos.append(z + 1 + " | Arquivo: " + hd.getCluster().get(y).getNome());
-					arquivos.append(" - Referencia: " + hd.getCluster().get(y).getReferencia() + "\n");
+				if (hd.getFat().get(i).getLocalizacao()
+						.equals(hd.getCluster().get(y).getReferencia())) {
+
+					arquivosNoDisco.addElement(z + 1 + " | Arquivo: "
+							+ hd.getCluster().get(y).getNome());
 					z++;
 				}
 			}
 		}
-		return arquivos.toString();
+		return arquivosNoDisco;
 	}
 
 	public String exibirDetalhesArquivo(int obj) {
 		StringBuilder detalhesArquivo = new StringBuilder();
 		Arquivo arquivo = null;
-		arquivo = hd.getFat().get(obj - 1).getArquivo();
-		detalhesArquivo.append("------------------------------------" + "\n");
+		int z = 0;
+
+		for (int i = 0; i < hd.getFat().size(); i++) {
+			for (int y = 0; y < hd.getCluster().size(); y++) {
+				if (hd.getFat().get(i).getLocalizacao()
+						.equals(hd.getCluster().get(y).getReferencia())) {
+					if (z == (obj)) {
+						arquivo = hd.getCluster().get(i);
+					}
+					z++;
+				}
+			}
+		}
+
+		detalhesArquivo.append("---------------------------------------------"
+				+ "\n");
 		detalhesArquivo.append("Nome: " + arquivo.getNome() + "\n");
-		detalhesArquivo.append("Data Criacao: " + arquivo.getDataDeCriacao() + "\n");
-		detalhesArquivo.append("Tamanho: " + arquivo.getTamanho() + " byte (s)" + "\n");
+		detalhesArquivo.append("Data Criacao: " + arquivo.getDataDeCriacao()
+				+ "\n");
+		detalhesArquivo.append("Tamanho: " + arquivo.getTamanho() + " byte (s)"
+				+ "\n");
 		detalhesArquivo.append("Conteudo: " + arquivo.getConteudo() + "\n");
-		detalhesArquivo.append("------------------------------------\n");
+		detalhesArquivo.append("Referência: " + arquivo.getReferencia() + "\n");
+		detalhesArquivo.append("---------------------------------------------"
+				+ "\n");
 		return detalhesArquivo.toString();
 	}
 
-	public String excluirArquivo(MetodoExclusao metodo, int arquivoParaExclusao) throws Exception {
+	public String excluirArquivo(MetodoExclusao metodo, int arquivoParaExclusao)
+			throws Exception {
 		Arquivo arquivo = null;
-		int z = 1;
+		int z = 0;
 		for (int i = 0; i < hd.getFat().size(); i++) {
 			for (int y = 0; y < hd.getCluster().size(); y++) {
-				if (hd.getFat().get(i).getLocalizacao().equals(hd.getCluster().get(y).getReferencia())) {
+				if (hd.getFat().get(i).getLocalizacao()
+						.equals(hd.getCluster().get(y).getReferencia())) {
 					if (z == (arquivoParaExclusao)) {
 						arquivo = hd.getCluster().get(i);
 					}
@@ -80,37 +105,43 @@ public class Computador {
 		if (metodo.equals(MetodoExclusao.NATIVA)) {
 			String nomeArquivo = arquivo.getNome();
 			hd.removeArquivo(arquivo);
-			return nomeArquivo + " EXCLUIDO com sucesso";
+			return nomeArquivo + " excluido com sucesso";
 		} else if (metodo.equals(MetodoExclusao.SHRED)) {
 			StringBuilder resultado = new StringBuilder();
 			Shred shred = new Shred();
 			String nomeArquivo = arquivo.getNome();
 			resultado.append(shred.u(hd, arquivo));
-			resultado.append("Arquivo: " + nomeArquivo + " EXCLUIDO com sucesso");
+			resultado.append("Arquivo: " + nomeArquivo
+					+ " excluido com sucesso");
 			return resultado.toString();
 		}
 		return null;
 	}
 
-	public String exibirParaRecuperar() throws Exception {
-		StringBuilder arquivoParaRecuperar = new StringBuilder();
+	public DefaultListModel<String> exibirParaRecuperar() {
+		DefaultListModel<String> arquivoParaRecuperar = new DefaultListModel<String>();
 		int z = 0;
 		for (int i = 0; i < hd.getCluster().size(); i++) {
 			if (hd.getFat().get(i).getLocalizacao().equals("null")) {
-				arquivoParaRecuperar.append(z + 1 + " | Arquivo: " + hd.getCluster().get(i).getNome());
-				arquivoParaRecuperar.append(" - Referencia: " + hd.getFat().get(i).getLocalizacao() + "\n");
+				arquivoParaRecuperar.addElement(z + 1 + " | Arquivo: "
+						+ hd.getCluster().get(i).getNome() + " - Referencia: "
+						+ hd.getFat().get(i).getLocalizacao() + "\n");
 				z++;
 			}
 		}
-		return arquivoParaRecuperar.toString();
+		return arquivoParaRecuperar;
 	}
 
 	public Arquivo recuperarArquivo(int obj) throws Exception {
 		Arquivo arquivo = null;
+		int z = 0;
 		RecuperaArquivo recupera = new RecuperaArquivo();
 		for (int i = 0; i < hd.getCluster().size(); i++) {
 			if (hd.getFat().get(i).getLocalizacao().equals("null")) {
-				arquivo = hd.getCluster().get(i);
+				if (z == obj) {
+					arquivo = hd.getCluster().get(i);
+				}
+				z++;
 			}
 		}
 		recupera.restaurarArquivo(hd, arquivo);
