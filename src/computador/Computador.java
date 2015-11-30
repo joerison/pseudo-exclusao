@@ -43,11 +43,9 @@ public class Computador {
 		int z = 0;
 		for (int i = 0; i < hd.getFat().size(); i++) {
 			for (int y = 0; y < hd.getCluster().size(); y++) {
-				if (hd.getFat().get(i).getLocalizacao()
-						.equals(hd.getCluster().get(y).getReferencia())) {
+				if (hd.getFat().get(i).getLocalizacao().equals(hd.getCluster().get(y).getReferencia())) {
 
-					arquivosNoDisco.addElement(z + 1 + " | Arquivo: "
-							+ hd.getCluster().get(y).getNome());
+					arquivosNoDisco.addElement(z + 1 + " | Arquivo: " + hd.getCluster().get(y).getNome());
 					z++;
 				}
 			}
@@ -62,8 +60,7 @@ public class Computador {
 
 		for (int i = 0; i < hd.getFat().size(); i++) {
 			for (int y = 0; y < hd.getCluster().size(); y++) {
-				if (hd.getFat().get(i).getLocalizacao()
-						.equals(hd.getCluster().get(y).getReferencia())) {
+				if (hd.getFat().get(i).getLocalizacao().equals(hd.getCluster().get(y).getReferencia())) {
 					if (z == (obj)) {
 						arquivo = hd.getCluster().get(i);
 					}
@@ -72,28 +69,22 @@ public class Computador {
 			}
 		}
 
-		detalhesArquivo.append("---------------------------------------------"
-				+ "\n");
+		detalhesArquivo.append("---------------------------------------------" + "\n");
 		detalhesArquivo.append("Nome: " + arquivo.getNome() + "\n");
-		detalhesArquivo.append("Data Criacao: " + arquivo.getDataDeCriacao()
-				+ "\n");
-		detalhesArquivo.append("Tamanho: " + arquivo.getTamanho() + " byte (s)"
-				+ "\n");
+		detalhesArquivo.append("Data Criacao: " + arquivo.getDataDeCriacao() + "\n");
+		detalhesArquivo.append("Tamanho: " + arquivo.getTamanho() + " byte (s)" + "\n");
 		detalhesArquivo.append("Conteudo: " + arquivo.getConteudo() + "\n");
 		detalhesArquivo.append("Referência: " + arquivo.getReferencia() + "\n");
-		detalhesArquivo.append("---------------------------------------------"
-				+ "\n");
+		detalhesArquivo.append("---------------------------------------------" + "\n");
 		return detalhesArquivo.toString();
 	}
 
-	public String excluirArquivo(MetodoExclusao metodo, int arquivoParaExclusao)
-			throws Exception {
+	public String excluirArquivo(MetodoExclusao metodo, int arquivoParaExclusao) throws Exception {
 		Arquivo arquivo = null;
 		int z = 0;
 		for (int i = 0; i < hd.getFat().size(); i++) {
 			for (int y = 0; y < hd.getCluster().size(); y++) {
-				if (hd.getFat().get(i).getLocalizacao()
-						.equals(hd.getCluster().get(y).getReferencia())) {
+				if (hd.getFat().get(i).getLocalizacao().equals(hd.getCluster().get(y).getReferencia())) {
 					if (z == (arquivoParaExclusao)) {
 						arquivo = hd.getCluster().get(i);
 					}
@@ -111,8 +102,7 @@ public class Computador {
 			Shred shred = new Shred();
 			String nomeArquivo = arquivo.getNome();
 			resultado.append(shred.u(hd, arquivo));
-			resultado.append("Arquivo: " + nomeArquivo
-					+ " excluido com sucesso");
+			resultado.append("Arquivo: " + nomeArquivo + " excluido com sucesso");
 			return resultado.toString();
 		}
 		return null;
@@ -123,9 +113,8 @@ public class Computador {
 		int z = 0;
 		for (int i = 0; i < hd.getCluster().size(); i++) {
 			if (hd.getFat().get(i).getLocalizacao().equals("null")) {
-				arquivoParaRecuperar.addElement(z + 1 + " | Arquivo: "
-						+ hd.getCluster().get(i).getNome() + " - Referencia: "
-						+ hd.getFat().get(i).getLocalizacao() + "\n");
+				arquivoParaRecuperar.addElement(z + 1 + " | Arquivo: " + hd.getCluster().get(i).getNome()
+						+ " - Referencia: " + hd.getFat().get(i).getLocalizacao() + "\n");
 				z++;
 			}
 		}
