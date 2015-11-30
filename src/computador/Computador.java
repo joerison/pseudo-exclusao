@@ -65,14 +65,14 @@ public class Computador {
 
 	public String excluirArquivo(MetodoExclusao metodo, int arquivoParaExclusao) throws Exception {
 		Arquivo arquivo = null;
-		int z = 0;
+		int z = 1;
 		for (int i = 0; i < hd.getFat().size(); i++) {
 			for (int y = 0; y < hd.getCluster().size(); y++) {
 				if (hd.getFat().get(i).getLocalizacao().equals(hd.getCluster().get(y).getReferencia())) {
-					if (z == (arquivoParaExclusao - 1)) {
+					if (z == (arquivoParaExclusao)) {
 						arquivo = hd.getCluster().get(i);
-						z++;
 					}
+					z++;
 				}
 			}
 		}
@@ -107,12 +107,10 @@ public class Computador {
 
 	public Arquivo recuperarArquivo(int obj) throws Exception {
 		Arquivo arquivo = null;
-		
 		RecuperaArquivo recupera = new RecuperaArquivo();
 		for (int i = 0; i < hd.getCluster().size(); i++) {
 			if (hd.getFat().get(i).getLocalizacao().equals("null")) {
 				arquivo = hd.getCluster().get(i);
-				System.out.println(i);
 			}
 		}
 		recupera.restaurarArquivo(hd, arquivo);
