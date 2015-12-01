@@ -3,7 +3,7 @@ package computador;
 
 public class RecuperaArquivo {
 
-	/* Metodo para recuperacao de arquivos - simulação de aplicativo */
+	/* Metodo para recuperacao de arquivos - simulação de aplicativo de restauração de dados */
 	public void restaurarArquivo(DiscoRigido discoRigido, Arquivo arquivo) throws Exception {
 		for (int i = 0; i < discoRigido.getCluster().size(); i++) {
 			if (discoRigido.getCluster().get(i).getReferencia().equals(arquivo.getReferencia())) {
