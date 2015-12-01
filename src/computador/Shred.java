@@ -28,9 +28,9 @@ public class Shred {
 
 	/*
 	 * Modifica o conteúdo do arquivo com valores aleatórios repetindo esse
-	 * processo por padrão três vezes sem preservar seu tamanho original no
-	 * final dessa etapa, depois renomeia o arquivo com vários zeros e no final
-	 * exclui sua referencia na tabela de arquivos do SO.
+	 * processo por padrão três vezes sem preservar seu tamanho original, depois
+	 * renomeia o arquivo com vários zeros e no final exclui sua referencia na
+	 * tabela de arquivos do SO.
 	 */
 	public String u(DiscoRigido discoRigido, Arquivo arquivo) throws Exception {
 		Random gerador = new Random();
@@ -43,17 +43,25 @@ public class Shred {
 		 */
 		for (int i = 0; i < discoRigido.getFat().size(); i++) {
 			for (int y = 0; y < discoRigido.getCluster().size(); y++) {
-				if (discoRigido.getFat().get(i).getLocalizacao()
+				if (discoRigido
+						.getFat()
+						.get(i)
+						.getLocalizacao()
 						.equals(discoRigido.getCluster().get(y).getReferencia())) {
-					if (discoRigido.getFat().get(i).getLocalizacao().equals(arquivo.getReferencia())) {
-						Arquivo arquivoParaExclusaoCluster = discoRigido.getCluster().get(y);
-						Endereco arquivoParaExclusaoFat = discoRigido.getFat().get(i);
+					if (discoRigido.getFat().get(i).getLocalizacao()
+							.equals(arquivo.getReferencia())) {
+						Arquivo arquivoParaExclusaoCluster = discoRigido
+								.getCluster().get(y);
+						Endereco arquivoParaExclusaoFat = discoRigido.getFat()
+								.get(i);
 						for (int j = 0; j < n(); j++) {
 							String resultado = v(j + 1, n() + 1, 0);
 							processoExclusao.append(resultado);
-							conteudo.append((char) (gerador.nextInt(26) + 65) + "" + (gerador.nextInt(1000) + 1000) + ""
+							conteudo.append((char) (gerador.nextInt(26) + 65)
+									+ "" + (gerador.nextInt(1000) + 1000) + ""
 									+ (char) (gerador.nextInt(26) + 65));
-							arquivoParaExclusaoCluster.setConteudo(conteudo.toString());
+							arquivoParaExclusaoCluster.setConteudo(conteudo
+									.toString());
 							arquivoParaExclusaoCluster.setNome("0");
 							arquivoParaExclusaoCluster.setTamanho(0);
 							arquivoParaExclusaoFat.setLocalizacao("null");
