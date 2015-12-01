@@ -309,7 +309,7 @@ public class Tela {
 		sobre.setOpaque(false);
 		sobre.setRequestFocusEnabled(false);
 		sobre.setVerifyInputWhenFocusTarget(false);
-		janelaPrincipal.addTab("Sobre", null, sobre, null);
+		//janelaPrincipal.addTab("Sobre", null, sobre, null);
 		sobre.setLayout(null);
 
 		JLabel lblOlaIssoEh = new JLabel("PSEUDO-EXCLUSÃO:");
@@ -374,32 +374,32 @@ public class Tela {
 
 		JLabel lblBrasliaDf = new JLabel("Brasília - DF, 2015");
 		lblBrasliaDf.setHorizontalAlignment(SwingConstants.CENTER);
-		lblBrasliaDf.setBounds(12, 425, 488, 15);
+		lblBrasliaDf.setBounds(12, 412, 488, 15);
 		sobre.add(lblBrasliaDf);
 		
 		JLabel lblJorgeSobue = new JLabel("Jorge Sobue");
 		lblJorgeSobue.setHorizontalAlignment(SwingConstants.CENTER);
-		lblJorgeSobue.setBounds(12, 360, 195, 15);
+		lblJorgeSobue.setBounds(12, 350, 195, 15);
 		sobre.add(lblJorgeSobue);
 		
 		JLabel lblJorgesobuegmailcom = new JLabel("jorgesobue@gmail.com");
 		lblJorgesobuegmailcom.setHorizontalAlignment(SwingConstants.CENTER);
-		lblJorgesobuegmailcom.setBounds(12, 383, 200, 15);
+		lblJorgesobuegmailcom.setBounds(12, 373, 200, 15);
 		sobre.add(lblJorgesobuegmailcom);
 		
 		JLabel lblContatoclebermitchellcombr = new JLabel("contato@clebermitchell.com.br");
 		lblContatoclebermitchellcombr.setHorizontalAlignment(SwingConstants.CENTER);
-		lblContatoclebermitchellcombr.setBounds(252, 383, 235, 15);
+		lblContatoclebermitchellcombr.setBounds(252, 373, 235, 15);
 		sobre.add(lblContatoclebermitchellcombr);
 		
 		JLabel lblCleberMitchell = new JLabel("Cleber Mitchell");
 		lblCleberMitchell.setHorizontalAlignment(SwingConstants.CENTER);
-		lblCleberMitchell.setBounds(275, 360, 184, 15);
+		lblCleberMitchell.setBounds(275, 350, 184, 15);
 		sobre.add(lblCleberMitchell);
 		
 		JLabel lblAgradecimentos = new JLabel("Agradecimentos:");
 		lblAgradecimentos.setHorizontalAlignment(SwingConstants.CENTER);
-		lblAgradecimentos.setBounds(12, 329, 488, 15);
+		lblAgradecimentos.setBounds(12, 319, 488, 15);
 		sobre.add(lblAgradecimentos);
 
 		JPanel manual = new JPanel();
