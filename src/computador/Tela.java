@@ -83,7 +83,7 @@ public class Tela {
 		painelArquivoConteudo.setBounds(138, 159, 278, 91);
 		criarArquivo.add(painelArquivoConteudo);
 
-		JTextArea arquivoConteudo = new JTextArea();
+		final JTextArea arquivoConteudo = new JTextArea();
 		painelArquivoConteudo.setViewportView(arquivoConteudo);
 
 		arquivoNome = new JTextField();
@@ -118,7 +118,7 @@ public class Tela {
 		painelListagemArquivos.setBounds(12, 79, 225, 224);
 		listarArquivos.add(painelListagemArquivos);
 
-		JList<String> listaArquivosHd = new JList<String>();
+		final JList<String> listaArquivosHd = new JList<String>();
 
 		// list.removeAll();
 		painelListagemArquivos.setViewportView(listaArquivosHd);
@@ -132,7 +132,7 @@ public class Tela {
 		painelArquivosRecuperar.setBounds(93, 91, 310, 286);
 		recuperar.add(painelArquivosRecuperar);
 
-		JList<String> listaArquivosRecuperar = new JList<String>(dell.exibirParaRecuperar());
+		final JList<String> listaArquivosRecuperar = new JList<String>(dell.exibirParaRecuperar());
 		painelArquivosRecuperar.setViewportView(listaArquivosRecuperar);
 
 		JButton btnRecuperar = new JButton("Recuperar");
@@ -173,7 +173,7 @@ public class Tela {
 		painelDetalhesArquivo.setBounds(265, 79, 202, 224);
 		listarArquivos.add(painelDetalhesArquivo);
 
-		JTextPane detalhesArquivo = new JTextPane();
+		final JTextPane detalhesArquivo = new JTextPane();
 		painelDetalhesArquivo.setViewportView(detalhesArquivo);
 		detalhesArquivo.setEditable(false);
 
@@ -181,7 +181,7 @@ public class Tela {
 		painelNotificacoes.setBounds(267, 356, 200, 140);
 		listarArquivos.add(painelNotificacoes);
 
-		JTextPane notificacoes = new JTextPane();
+		final JTextPane notificacoes = new JTextPane();
 		painelNotificacoes.setViewportView(notificacoes);
 		notificacoes.setEditable(false);
 
@@ -305,7 +305,7 @@ public class Tela {
 		lblCriarArquivo.setBounds(12, 42, 183, 25);
 		criarArquivo.add(lblCriarArquivo);
 
-		JPanel sobre = new JPanel();
+		final JPanel sobre = new JPanel();
 		sobre.setOpaque(false);
 		sobre.setRequestFocusEnabled(false);
 		sobre.setVerifyInputWhenFocusTarget(false);
@@ -402,7 +402,7 @@ public class Tela {
 		lblAgradecimentos.setBounds(12, 319, 488, 15);
 		sobre.add(lblAgradecimentos);
 
-		JPanel manual = new JPanel();
+		final JPanel manual = new JPanel();
 		manual.setLayout(null);
 		manual.setVerifyInputWhenFocusTarget(false);
 		manual.setRequestFocusEnabled(false);
