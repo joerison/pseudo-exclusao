@@ -64,7 +64,7 @@ public class Tela {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame("Projeto PI I - Pseudo Exclusão (2015)");
+		frame = new JFrame("Projeto PI I - Pseudo Exclusão (2º Semestre / 2015)");
 		frame.setBounds(100, 100, 517, 606);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new CardLayout(0, 0));
