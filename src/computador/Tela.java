@@ -372,7 +372,7 @@ public class Tela {
 		lblProjetoIntegrado.setBounds(12, 46, 488, 15);
 		sobre.add(lblProjetoIntegrado);
 
-		JLabel lblBrasliaDf = new JLabel("Brasília - DF, 2015");
+		JLabel lblBrasliaDf = new JLabel("Brasília - DF, 2º Semestre / 2015");
 		lblBrasliaDf.setHorizontalAlignment(SwingConstants.CENTER);
 		lblBrasliaDf.setBounds(12, 412, 488, 15);
 		sobre.add(lblBrasliaDf);
